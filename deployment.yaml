@@ -5,6 +5,8 @@ metadata:
   name: dummkopf
 spec:
   replicas: 10
+  syncPolicy:
+    automated: {}
   selector:
     matchLabels:
       app: dummkopf
