@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dummkopf
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: dummkopf
+  template:
+    metadata:
+      labels:
+        app: dummkopf
+    spec:
+      containers:
+        - name: dummkopf
+          image: 920858517028.dkr.ecr.us-east-1.amazonaws.com/dummkopf:0.0.1
+          ports:
+            - containerPort: 8080
