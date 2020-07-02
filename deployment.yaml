@@ -1,11 +1,10 @@
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: Rollout
 metadata:
   name: dummkopf
 spec:
-  replicas: 1
-  revisionHistoryLimit: 3
+  replicas: 10
   selector:
     matchLabels:
       app: dummkopf
@@ -16,6 +15,18 @@ spec:
     spec:
       containers:
         - name: dummkopf
-          image: 920858517028.dkr.ecr.us-east-1.amazonaws.com/dummkopf:0.0.2
+          image: 920858517028.dkr.ecr.us-east-1.amazonaws.com/dummkopf:0.0.3
           ports:
-            - containerPort: 8080
+            - containerPort: 9000
+  minReadySeconds: 30
+  revisionHistoryLimit: 3
+  strategy:
+    canary:
+      maxSurge: "25%"
+      maxUnavailable: 0
+      steps:
+        - setWeight: 10
+        - pause:
+            duration: 20
+        - setWeight: 20
+        - pause: {}
