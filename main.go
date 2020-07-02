@@ -21,7 +21,7 @@ var (
 	httpReqs = promauto.NewCounterVec(
 		prometheus.CounterOpts{
 			Name: "http_requests_total",
-			Help: "Total number of HTTP requests processed, partitioned by status code.",
+			Help: "Total HTTP requests processed, partitioned by status code.",
 		},
 		[]string{"code"},
 	)

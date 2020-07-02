@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: dummkopf
-          image: 920858517028.dkr.ecr.us-east-1.amazonaws.com/dummkopf:0.0.1
+          image: 920858517028.dkr.ecr.us-east-1.amazonaws.com/dummkopf:0.0.2
           ports:
             - containerPort: 8080
